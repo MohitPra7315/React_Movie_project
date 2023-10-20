@@ -1,10 +1,10 @@
-import { Cartoon } from "../Component/Cartoon"
+import { MovieDetails } from "../Component/MovieDetails"
 import { PotectMovie } from "../Component/PotectMovie"
-export function Cartoonp({isLoggedin}){
+export function MovieDetailsp({isLoggedin}){
     return(
         <div>
             <PotectMovie isloggedin={isLoggedin}>
-            <Cartoon/>
+            <MovieDetails/>
 
             </PotectMovie>
     

@@ -1,4 +1,4 @@
-import { useContext, useState,useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import './Homep.css'
 // import { APiContent } from '../ContextAPI/ApiContext'
 // import { useEffect } from 'react'
@@ -8,12 +8,12 @@ import Spinner from '../Component/Spinner'
 import { APiContent } from '../ContextAPI/ApiContext'
 
 export function Homep() {
-    // const TopRated = `https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
-    
+  // const TopRated = `https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
 
-    const{loader,setLoader}=useContext(APiContent)
-    
-  
+
+  const { loader, setLoader } = useContext(APiContent)
+
+
   const [popularMovie, setPopularMovie] = useState(
     [
       {
@@ -177,7 +177,7 @@ export function Homep() {
       }
     ]
   )
-  
+
   async function PopularMovie() {
     setLoader(true)
     try {
@@ -199,35 +199,35 @@ export function Homep() {
 
 
 
- 
 
 
 
 
 
 
-    return (
-        <div className="container-Home">
+
+  return (
+    <div className="container-Home">
 
 
-            <HomeCo ></HomeCo>
+      <HomeCo ></HomeCo>
 
 
-            <div className='text-white'>
-                <h1 className='text-white font-bold text-[50px] ml-56 pt-28 '>Popular</h1>
+      <div className='text-white'>
+        <h1 className='text-white font-bold text-[50px] ml-56 pt-28 '>Popular</h1>
 
-                <section className="w-[1600px]  mx-auto flex flex-wrap gap-4 items-center justify-center pt-12 ">
-                    {
-                        loader ?
-                            <Spinner></Spinner> :
-                            popularMovie.map((movie) => (<Card key={movie.id} movie={movie} ></Card>))
-                    }
-                </section>
-            </div>
-
-
+        <section className="w-[1600px]  mx-auto flex flex-wrap gap-4 items-center justify-center pt-12 ">
+          {
+            loader ?
+              <Spinner></Spinner> :
+              popularMovie.map((movie) => (<Card key={movie.id} movie={movie} ></Card>))
+          }
+        </section>
+      </div>
 
 
-        </div>
-    )
+
+
+    </div>
+  )
 }

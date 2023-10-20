@@ -219,7 +219,7 @@ export function HomeCo() {
                                 <div className="posterImage" style={{ width: "100%" }}>
                                     <img style={{ width: "100%", height: "100%" }} src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`} />
                                 </div>
-                                <div className="poaterImage_overlay" style={{ top: "0px", zIndex: "10", background: "rgba(0,0,9,0.2)", height: "100%", width: "100%", position: "absolute" }}>
+                                <div className="poaterImage_overlay" style={{ top: "0px", zIndex: "10",  background: "linear-gradient(rgba(0,0,0,0) ,rgba(0,0,0,1)", height: "100%", width: "100%", position: "absolute" }}>
                                     <section className="" style={{ width: "100%", height: "100%", background: "", position: "relative" }}>
                                         <div className="absolute  w-[70%] ml-36 h-80 bottom-16 z-10" >
                                             <div className="posterImage_title text-left w-full text-[60px] space-x-2 text-red-600 font-bold ">{movie ? movie.original_title: ""}</div>
@@ -238,13 +238,15 @@ export function HomeCo() {
                                     </section>
                                 </div>
                             </div>
-                        ))
+                         ))
 
                         }
 
                     </Carousel>
 
                 </div>
+
+
 
             </div>
     )

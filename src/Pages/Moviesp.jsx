@@ -1,8 +1,47 @@
+// import { useParams } from "react-router-dom";
+// import { Movies } from "../Component/Movies"
+// import { PotectMovie } from '../Component/PotectMovie'
+// import { useContext } from "react";
+// import { APiContent } from "../ContextAPI/ApiContext";
+
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import { Pagination } from "../Component/Pagination";
+// export function Moviesp({ setIsloggedin, isloggedin }) {
+
+//    
+//    
+
+
+
+
+//   
+
+//     useEffect(() => {
+//         getData()
+//     }, [type, popularpage])
+
+//     const getData = () => {
+//         fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${popularpage}`)
+//             .then(res => res.json())
+//             .then(data => setMovieList(data.results))
+//     }
+//     return (
+//         <div>
+//             <Movies moviedata={movieList} setIsloggedin={setIsloggedin} isloggedin={isloggedin} />
+//            
+//         </div>
+//     )
+// }
+
 import { useParams } from "react-router-dom";
 import { Movies } from "../Component/Movies"
 import { PotectMovie } from '../Component/PotectMovie'
 import { useState } from "react";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { APiContent } from "../ContextAPI/ApiContext";
+import { Pagination } from "../Component/Pagination";
 export function Moviesp({ setIsloggedin, isloggedin }) {
 
     const [moviedata, setMoviedata] = useState(
@@ -167,12 +206,11 @@ export function Moviesp({ setIsloggedin, isloggedin }) {
                 "vote_count": 523
             }
         ]
+
     )
    
-    // const pathname = window.location.pathname;
-    // const pathnameSegments = pathname.split('/');
-    // const lastSegment = pathnameSegments[pathnameSegments.length - 1];
-
+    const { popularpage, setPopularpage } = useContext(APiContent)
+        console.log(popularpage)
 
       
     const [movieList, setMovieList] = useState([])
@@ -184,10 +222,10 @@ console.log(type)
 
     useEffect(() => {
         getData()
-    }, [type])
+    }, [type,popularpage])
 
     const getData = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${popularpage}`)
         .then(res => res.json())
         .then(data => setMovieList(data.results))
     }
@@ -200,7 +238,7 @@ console.log(type)
 
 
             <Movies moviedata={movieList} setIsloggedin={setIsloggedin} isloggedin={isloggedin} />
-
+<Pagination></Pagination>
         </div>
     )
 }

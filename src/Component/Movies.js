@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Spinner from './Spinner';
-import { useContext } from 'react';
-import { APiContent } from '../ContextAPI/ApiContext';
+
 import { Card } from './Card';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Pagination } from './Pagination';
 
 // import { useLocation } from 'react-router-dom';
 export function Movies({moviedata}) {
-    // const{type}=useParams();
-    // console.log(type)
+    const{type}=useParams();
+    console.log(type)
 // console.log(moviedata)
 
     
@@ -18,11 +18,11 @@ const[loader,setLoader]=useState(false)
   
 
     return (
-        <div className='text-white'>
+        <div className='text-white pb-5'>
            <div className='text-white'>
-                <h1 className='text-white font-bold text-[50px] ml-56 pt-28 '>Popular</h1>
+                <h1 className='text-white font-bold text-[50px] ml-56 pt-28 '>{type.toUpperCase()}</h1>
 
-                <section className="w-[1800px]  mx-auto flex flex-wrap gap-4 items-center justify-center pt-12 ">
+                <section className="w-[1800px]  mx-auto flex  gap-4 items-center justify-center  h-auto flex-wrap pt-12 ">
                     {
                         loader ?
                             <Spinner></Spinner> :
@@ -31,7 +31,7 @@ const[loader,setLoader]=useState(false)
                 </section>
             </div>
 
-           
+       
         </div>
     )
 }

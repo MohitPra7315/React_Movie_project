@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 
 
@@ -10,7 +10,12 @@ export function PotectMovie({ isloggedin, children }) {
         return children
     }
     else {
-        Navigator("/Login")
+        return (
+
+            <Navigate to="/Login"/>
+            // <Navigator to="/Login" ></Navigator>
+
+        )
 
     }
 

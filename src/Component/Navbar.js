@@ -1,11 +1,16 @@
 
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import "./Navbar.css"
+import { useContext, useState } from 'react'
+import { APiContent } from '../ContextAPI/ApiContext'
 
 export function Navbar({ isLoggedin, setIsloggedin }) {
 
 
+    // const[seach,setSearch]=useState('')
+  
 
     const Navigtor = useNavigate();
 
@@ -21,29 +26,30 @@ export function Navbar({ isLoggedin, setIsloggedin }) {
                     <NavLink to="/Movies/top_rated" className="active:bg-cyan-950"><li>TopRated</li></NavLink>
 
                     <NavLink to="/Movies/upcoming" className="active:bg-cyan-950"><li>Upcoming</li></NavLink>
-
+                    <NavLink to="/Search">Search</NavLink>
                 </ul>
             </div>
 
+           
 
             <div className='flex gap-x-3'>
                 {!isLoggedin ?
-                    (<NavLink to="/Login" >
+                    (<Link to="/Login" >
                         <button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Login</button>
-                    </NavLink>) :
-                    (<NavLink to="/"
+                    </Link>) :
+                    (<Link to="/"
                         onClick={() => {
                             setIsloggedin(false)
                             toast.success("logged out")
                         }}
 
-                        className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Logout</button></NavLink>)
+                        className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Logout</button></Link>)
                 }
                 {!isLoggedin ?
-                    <NavLink to="/Sigup" className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Signup</button></NavLink> :
+                    <Link to="/Sigup" className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Signup</button></Link> :
 
-
-                    <NavLink to="/Dashboard" className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Dashboard</button></NavLink>
+                    ""
+                    // <Link to="/Dashboard" className="active:bg-cyan-950"><button className='border' style={{ padding: "5px 10px", borderRadius: "5px ", fontWeight: "bold" }}>Dashboard</button></Link>
 
                 }
             </div>
