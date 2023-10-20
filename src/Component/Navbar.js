@@ -26,7 +26,7 @@ export function Navbar({ isLoggedin, setIsloggedin }) {
                     <NavLink to="/Movies/top_rated" className="active:bg-cyan-950"><li>TopRated</li></NavLink>
 
                     <NavLink to="/Movies/upcoming" className="active:bg-cyan-950"><li>Upcoming</li></NavLink>
-                    <NavLink to="/Search">Search</NavLink>
+                    {/* <NavLink to="/Search">Search</NavLink> */}
                 </ul>
             </div>
 

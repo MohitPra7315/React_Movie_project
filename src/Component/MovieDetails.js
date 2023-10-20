@@ -14,8 +14,8 @@ export function MovieDetails() {
 
     const { id } = useParams()
 
-    console.log(movie.original_title);
-    console.log(titleMoviedata);
+    // console.log(movie);
+
 
     async function Movieapi() {
         // const Url = `https://api.themoviedb.org/3/movie/?${id}&api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`;
@@ -25,7 +25,7 @@ export function MovieDetails() {
         try {
             const res = await fetch(Url);
             const output = await res.json();
-            console.log(output)
+            // console.log(output)
             setMovie(output)
             // setTtid(movie.imdb_id)
             // setOriginaltitle(movie.original_title);
@@ -41,7 +41,7 @@ export function MovieDetails() {
         try {
             const Uurl = await fetch(`https://www.omdbapi.com/?t=${movie.original_title}&apikey=86dc460a`)
             const idmovie = await Uurl.json();
-            console.log(idmovie);
+            // console.log(idmovie);
             setTitlemoviedata(idmovie)
         }
         catch (error) {
@@ -120,17 +120,65 @@ export function MovieDetails() {
                                 <hr></hr>
                             </div>
                         </div>
-                        <div className=' bg-slate-200  w-[80%] mt-8 h-[445px] rounded-lg flex mx-auto'>
-                            <div className="movie__detailLeft">
-                                <div className="movie__posterBox h-445px ">
-                                    <img className="movie__poster h-full w-full" src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`} />
+                        <div className=' bg-white  w-[80%] mt-8 h-[555px] pl-20  rounded-lg flex mx-auto justify-around items-center' >
+                            <div className="movie__detailLeft  ">
+                                <div className="movie__posterBox h-470px  ">
+                                    <img className="movie__poster h-full " src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`} />
                                 </div>
                             </div>
-                            <div className='bg-#333 h-full w-[500px]'>
+                            <div className='bg-#333 h-full w-[80%] mr-8 mt-3 rounded-lg  '>
+                                <section className='bg-black h-[440px] w-full mt-14  rounded-lg'>
+                                <div className="movie__detailRight ">
+                                    <div className="movie__detailRightTop">
+                                        <div className="movie__name">{movie ? movie.original_title : ""}</div>
+                                        <div className='connt'>
 
+                                            <div className="movie__tagline">{movie ? movie.tagline : ""}</div>
+                                            <div className='flex '>
+                                                <div className="movie__rating">
+                                                    {movie ? movie.vote_average : ""} <i class="fas fa-star" className='border-l-2 -px-2' />
+                                                    <span className="movie__voteCount border-r-2 px-2">{movie ? "(" + movie.vote_count + ") votes" : ""}</span>
+                                                </div>
+                                                <div className="movie__runtime">{movie ? movie.runtime + " mins" : ""}</div>
+                                            </div>
+                                            <div className="movie__releaseDate">{movie ? "Release date: " + movie.release_date : ""}</div>
+                                        </div>
+                                        <div className="movie__genres">
+                                            {
+                                                movie && movie.genres
+                                                    ?
+                                                    movie.genres.map(genre => (
+                                                        <><span className="movie__genre" id={genre.id}>{genre.name}</span></>
+                                                    ))
+                                                    :
+                                                    ""
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="movie__detailRightBottom">
+                                        <div className="synopsisText">Overview</div>
+                                        <div>{movie ? movie.overview : ""}</div>
+                                    </div>
+
+                                </div>
+                                  
+                                </section>
 
                             </div>
                         </div>
+                          <p className='text-white'>{movie.tagline}</p> 
+                                    <h1 className='text-center text-[30px]  rounded-lg w-[400px] text-white font-bold letter-space-2 mx-auto  py-3 px-4'>Production companies</h1>
+                                     <div className='flex w-[100%] justify-around  items-center mt-7 '>
+                                        <div className='w-[150px] h-[150px] border-2 border-white'>
+                                            <img className='h-[100%] w-[100%]' src={`https://image.tmdb.org/t/p/original/iB6GjNVHs5hOqcEYt2rcjBqIjki.png`}></img>
+                                           
+                                        </div>
+                                        <div className='w-[150px] h-[150px] border-2 border-white'>
+                                            <img className='h-[100%] w-[100%] bg-cover bg-center' src={`https://image.tmdb.org/t/p/original/8PAf5K4VVI6xO9SjB7bxLtpi4xH.png`}></img>
+
+                                        </div>
+                                     
+                                    </div>
 
                     </div>
 

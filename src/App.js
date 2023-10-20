@@ -36,7 +36,7 @@ function App() {
               <Moviesp setIsloggedin={setIsloggedin} isloggedin={isloggedin} />
             </PotectMovie>}>
           </Route>
-          <Route path="/Search" element={<Searchp></Searchp>}> </Route>
+
           <Route path="/Movie/:id" element={<MovieDetailsp isLoggedin={isloggedin} />}></Route>
           <Route path="/Login" element={<Loginpage setIsloggedin={setIsloggedin} isloggedin={isloggedin} />}></Route>
           <Route path="/Sigup" element={<Signuppage setIsloggedin={setIsloggedin} isloggedin={isloggedin} />}></Route>

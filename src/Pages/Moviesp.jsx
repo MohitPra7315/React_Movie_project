@@ -208,37 +208,37 @@ export function Moviesp({ setIsloggedin, isloggedin }) {
         ]
 
     )
-   
-    const { popularpage, setPopularpage } = useContext(APiContent)
-        console.log(popularpage)
 
-      
+    const { popularpage, setPopularpage } = useContext(APiContent)
+    console.log(popularpage)
+
+
     const [movieList, setMovieList] = useState([])
-    const {type} = useParams()
-console.log(type)
+    const { type } = useParams()
+    console.log(type)
     useEffect(() => {
         getData()
     }, [])
 
     useEffect(() => {
         getData()
-    }, [type,popularpage])
+    }, [type, popularpage])
 
     const getData = () => {
         fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${popularpage}`)
-        .then(res => res.json())
-        .then(data => setMovieList(data.results))
+            .then(res => res.json())
+            .then(data => setMovieList(data.results))
     }
-   
+
 
 
     // console.log(moviedata)
     return (
-        <div>
+        <div className="mb-[]">
 
 
             <Movies moviedata={movieList} setIsloggedin={setIsloggedin} isloggedin={isloggedin} />
-<Pagination></Pagination>
+            <Pagination></Pagination>
         </div>
     )
 }
